@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/opt'
+let g:netrw_dirhist_2='/home/dawndiy/workspace/dawndiy.github.com/source'
+let g:netrw_dirhist_3='/home/dawndiy/workspace/PyGTK-PyGObject-Study-Notes/windows'
+let g:netrw_dirhist_4='/etc/apache2/conf.d'
+let g:netrw_dirhist_5='/usr/lib/apache2'
+let g:netrw_dirhist_6='/etc/apache2/conf.d'
+let g:netrw_dirhist_7='/var/www'
+let g:netrw_dirhist_8='/etc'
+let g:netrw_dirhist_9='nvidia'
