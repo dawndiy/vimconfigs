@@ -2,7 +2,8 @@ set t_Co=256
 set helplang=cn     " 帮助语言
 set encoding=utf-8  " 字符集
 
-colorscheme desert  " 配色方案
+"desert
+colorscheme molokai    " 配色方案
 
 set number	" 显示行号
 set syntax=on	" 语法高亮
