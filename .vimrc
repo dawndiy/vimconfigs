@@ -15,6 +15,8 @@ set smartindent
 set expandtab
 set smarttab
 
+"set mouse=a     " 鼠标支持
+
 set showmatch	" 高亮显示匹配的括号
 set matchtime=3	" 匹配括号高亮的时间（单位是十分之一秒）
 
