@@ -25,7 +25,7 @@ set ignorecase  " 忽略大小写的查找
 filetype on     " 侦测文件类型
 filetype indent on
 filetype plugin on
-set ofu=syntaxcomplete#Complete
+"set ofu=syntaxcomplete#Complete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType python runtime! autoload/pythoncomplete.vim
 set completeopt=longest,menu
@@ -41,4 +41,7 @@ let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplMapWindowNavVim = 1
 " <C-箭头键>切换到上下左右窗口中去
 let g:miniBufExplMapWindowNavArrows = 1
-
+" 文件管理器
+let g:winManagerWindowLayout = "FileExplorer"
+" 文件管理靠右
+let g:winManagerOnRightSide = 1
