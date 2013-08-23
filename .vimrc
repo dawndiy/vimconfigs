@@ -34,14 +34,47 @@ set completeopt=longest,menu
 let g:pydiction_location = '~/.vim/after/ftplugin/pydiction/complete-dict'
 let g:pydiction_menu_height =20
 
-" <C-Tab>     向前循环切换到每个buffer上,并在但前窗口打开
-" <C-S-Tab>   向后循环切换到每个buffer上,并在但前窗口打开
-let g:miniBufExplMapCTabSwitchBufs = 1
+"" OLD MiniBufExpl
+"" =========================================================================
+"" <C-Tab>     向前循环切换到每个buffer上,并在但前窗口打开
+"" <C-S-Tab>   向后循环切换到每个buffer上,并在但前窗口打开
+"let g:miniBufExplModSelTarget = 1
+"let g:miniBufExplMapCTabSwitchBufs = 1
+"" <C-h,j,k,l>切换到上下左右的窗口中去
+"let g:miniBufExplMapWindowNavVim = 1
+"" <C-箭头键>切换到上下左右窗口中去
+"let g:miniBufExplMapWindowNavArrows = 1
+
+" MiniBufExpl
+" ==========================================================================
 " <C-h,j,k,l>切换到上下左右的窗口中去
-let g:miniBufExplMapWindowNavVim = 1
-" <C-箭头键>切换到上下左右窗口中去
-let g:miniBufExplMapWindowNavArrows = 1
+noremap <C-J>   <C-W>j
+noremap <C-K>   <C-W>k
+noremap <C-H>   <C-W>h
+noremap <C-L>   <C-W>l
+" 切换 tab
+noremap <TAB>h  :MBEbp<CR>
+noremap <TAB>l  :MBEbn<CR>
+" MEB Toggle
+map <Leader>t :MBEToggle<cr>
+
+" TagList 
+" ==========================================================================
+" TagList 宽度
+let g:Tlist_WinWidth = 25
+
+" WinManager
+" ==========================================================================
 " 文件管理器
 let g:winManagerWindowLayout = "FileExplorer"
 " 文件管理靠右
 let g:winManagerOnRightSide = 1
+
+" NerdTree
+" ==========================================================================
+" NerdTree 显示位置, 默认"left"
+let g:NERDTreeWinPos = "right"
+" NerdTree 宽度, 默认 31
+let g:NERDTreeWinSize = 25
+
+
