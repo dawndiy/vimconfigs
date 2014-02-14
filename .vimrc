@@ -2,6 +2,7 @@ set t_Co=256
 set helplang=cn     " 帮助语言
 set encoding=utf-8  " 字符集
 
+syntax enable
 "desert
 colorscheme molokai    " 配色方案
 
