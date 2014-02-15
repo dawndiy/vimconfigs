@@ -20,6 +20,8 @@ set smarttab
 
 set showmatch	" 高亮显示匹配的括号
 set matchtime=3	" 匹配括号高亮的时间（单位是十分之一秒）
+set cursorline  " 高亮当前行
+"set cursorcolumn    " 高亮当前列
 
 set ignorecase  " 忽略大小写的查找
 
