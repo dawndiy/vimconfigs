@@ -3,6 +3,7 @@ set helplang=cn     " 帮助语言
 set encoding=utf-8  " 字符集
 
 syntax enable
+
 "desert
 colorscheme molokai    " 配色方案
 
@@ -15,6 +16,9 @@ set autoindent  " 自动缩进
 set smartindent
 set expandtab
 set smarttab
+
+set incsearch
+set hlsearch
 
 "set mouse=a     " 鼠标支持
 
@@ -76,8 +80,36 @@ let g:winManagerOnRightSide = 1
 " NerdTree
 " ==========================================================================
 " NerdTree 显示位置, 默认"left"
-let g:NERDTreeWinPos = "right"
+let g:NERDTreeWinPos = "left"
 " NerdTree 宽度, 默认 31
 let g:NERDTreeWinSize = 25
 
-
+" GoTags
+" ==========================================================================
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
