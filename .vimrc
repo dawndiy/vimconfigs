@@ -83,6 +83,8 @@ let g:winManagerOnRightSide = 1
 let g:NERDTreeWinPos = "left"
 " NerdTree 宽度, 默认 31
 let g:NERDTreeWinSize = 25
+" NerdTree 忽略显示列表
+let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$']
 
 " GoTags
 " ==========================================================================
