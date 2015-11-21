@@ -8,7 +8,7 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -67,7 +67,6 @@ set t_Co=256        " 颜色数目
 colorscheme molokai " 配色方案
 syntax enable       " 语法高亮
 set background=dark " 设置背景
-set syntax=on       " 打开语法高亮
 set encoding=utf-8  " 字符集
 set number          " 显示行号
 set syntax=on       " 语法高亮
