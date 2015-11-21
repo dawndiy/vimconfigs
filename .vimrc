@@ -28,6 +28,7 @@ Plugin 'mattn/emmet-vim'    " Emmet is a plugin for many popular text editors wh
 Plugin 'Valloric/YouCompleteMe' " A code-completion engine for Vim
 Plugin 'hdima/python-syntax'    " Python syntax highlighting script for Vim
 Plugin 'Raimondi/delimitMate'   " Vim plugin, provides insert mode auto-completion for quotes, parens, brackets, etc.
+Plugin 'peterhoeg/vim-qml'      " QML syntax highlighting for VIM 
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
