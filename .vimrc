@@ -29,6 +29,8 @@ Plugin 'Valloric/YouCompleteMe' " A code-completion engine for Vim
 Plugin 'hdima/python-syntax'    " Python syntax highlighting script for Vim
 Plugin 'Raimondi/delimitMate'   " Vim plugin, provides insert mode auto-completion for quotes, parens, brackets, etc.
 Plugin 'peterhoeg/vim-qml'      " QML syntax highlighting for VIM 
+Plugin 'pangloss/vim-javascript'    " Vastly improved Javascript indentation and syntax support in Vim.
+Plugin 'ahayman/vim-nodejs-complete'    " nodejs 'omnifunc' function of vim 
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
@@ -146,3 +148,6 @@ let g:tagbar_type_go = {
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
     \ }
+
+" Javascript, HTML, CSS
+autocmd FileType javascript,html,css,xml set ai sw=2 ts=2 sts=2
