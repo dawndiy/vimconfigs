@@ -19,7 +19,7 @@ Plugin 'scrooloose/nerdtree'    " A tree explorer plugin for vim.
 Plugin 'asins/vimcdoc'  " VIM中文文档
 Plugin 'fholgado/minibufexpl.vim'   " minibufexpl
 Plugin 'tomasr/molokai' " molokai 配色方案
-Plugin 'altercation/vim-colors-solarized'   " solarized 配色方案
+" Plugin 'altercation/vim-colors-solarized'   " solarized 配色方案
 Plugin 'terryma/vim-multiple-cursors'   " multiple cursors
 Plugin 'bling/vim-airline'  " Lean & mean status/tabline for vim that's light as air.
 Plugin 'fatih/vim-go'   " Go (golang) support for Vim
@@ -31,6 +31,7 @@ Plugin 'Raimondi/delimitMate'   " Vim plugin, provides insert mode auto-completi
 Plugin 'peterhoeg/vim-qml'      " QML syntax highlighting for VIM 
 Plugin 'pangloss/vim-javascript'    " Vastly improved Javascript indentation and syntax support in Vim.
 Plugin 'ahayman/vim-nodejs-complete'    " nodejs 'omnifunc' function of vim 
+Plugin 'scrooloose/syntastic'           " Syntax checking hacks for vim
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
