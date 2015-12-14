@@ -1,154 +1,117 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+if filereadable(expand("~/.vim/.vimrc.vundle"))
+    source ~/.vim/.vimrc.vundle
+endif
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-" 在GitHub上的仓库
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdtree'    " A tree explorer plugin for vim.
-Plugin 'asins/vimcdoc'  " VIM中文文档
-Plugin 'fholgado/minibufexpl.vim'   " minibufexpl
-Plugin 'tomasr/molokai' " molokai 配色方案
-" Plugin 'altercation/vim-colors-solarized'   " solarized 配色方案
-Plugin 'terryma/vim-multiple-cursors'   " multiple cursors
-Plugin 'bling/vim-airline'  " Lean & mean status/tabline for vim that's light as air.
-Plugin 'fatih/vim-go'   " Go (golang) support for Vim
-Plugin 'majutsushi/tagbar'  " Tagbar is a Vim plugin that provides an easy way to browse the tags of the current file and get an overview of its structure.
-Plugin 'mattn/emmet-vim'    " Emmet is a plugin for many popular text editors which greatly improves HTML & CSS
-Plugin 'Valloric/YouCompleteMe' " A code-completion engine for Vim
-Plugin 'hdima/python-syntax'    " Python syntax highlighting script for Vim
-Plugin 'Raimondi/delimitMate'   " Vim plugin, provides insert mode auto-completion for quotes, parens, brackets, etc.
-Plugin 'peterhoeg/vim-qml'      " QML syntax highlighting for VIM 
-Plugin 'pangloss/vim-javascript'    " Vastly improved Javascript indentation and syntax support in Vim.
-Plugin 'ahayman/vim-nodejs-complete'    " nodejs 'omnifunc' function of vim 
-Plugin 'scrooloose/syntastic'           " Syntax checking hacks for vim
-
-" plugin from http://vim-scripts.org/vim/scripts.html
-Plugin 'L9'
-
-" Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
-
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-
-" Avoid a name conflict with L9
-" Plugin 'user/L9', {'name': 'newL9'}
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+"===============================================================================
+" 基础配置
+"===============================================================================
 
 
-" ==========================================================================
+set syntax=on               " 开启语法高亮
 
-set t_Co=256        " 颜色数目
-colorscheme molokai " 配色方案
-syntax enable       " 语法高亮
-set background=dark " 设置背景
-set encoding=utf-8  " 字符集
+filetype on                 " 检测文件类型
+filetype indent on          " 针对不同的文件类型采用不同的缩进格式
+filetype plugin on          " 允许插件
+filetype plugin indent on   " 启动自动补全
+
+set autoread                " 文件修改之后自动载入
+" set shortmess=atI           " 启动的时候不显示那个援助索马里儿童的提示
+
+set cursorline              " 突出显示当前行
+set cursorcolumn            " 突出显示当前列
+
+set mouse-=a                " - 则点击光标不会换,用于复制
+" set mouse=a                 " 启用鼠标
+
+"===============================================================================
+" 展示/排版等界面格式
+"===============================================================================
+
+
+set ruler           " 显示当前的行号列号
 set number          " 显示行号
-set syntax=on       " 语法高亮
-set tabstop=4       " Tab 宽度
-set softtabstop=4	" Tab 实际占有宽度
-set shiftwidth=4    " reindent 操作（<<和>>）时缩进的宽度
-set expandtab       " Tab 转化为空格
-set smarttab        " 智能 Tab, 根据文档判断
-" set cindent         " C 语言语法缩进
-" set autoindent      " 自动缩进, 拷贝当前行缩进到新行
+" set nowrap          " 取消换行
+set showmatch       " 高亮显示匹配的括号
+set matchtime=2     " 匹配括号高亮的时间（单位是十分之一秒）
+
+" 缩进配置
 set smartindent     " 智能缩进, 能匹配括号
+set autoindent      " 自动缩进
+
+" Tab相关变更
+set tabstop=4       " 设置Tab键的宽度        [等同的空格个数]
+set shiftwidth=4    " 每一次缩进对应的空格数
+set softtabstop=4   " 按退格键时可以一次删掉 4 个空格
+set smarttab        " insert tabs on the start of a line according to shiftwidth, not tabstop 按退格键时可以一次删掉 4 个空格
+set expandtab       " 将Tab自动转化成空格    [需要输入真正的Tab键时，使用 Ctrl+V + Tab]
+set shiftround      " 缩进时，取整 use multiple of shiftwidth when indenting with '<' and '>'
+
+" 文内搜索设置
 set incsearch       " 在输入时渐进匹配查找
 set hlsearch        " 高亮匹配的查找
-set ignorecase      " 查找时忽略大小写
-set showmatch       " 高亮显示匹配的括号
-set matchtime=1	    " 匹配括号高亮的时间（单位是十分之一秒）
-set cursorline      " 高亮当前行
-set cursorcolumn    " 高亮当前列
+set ignorecase      " 搜索时忽略大小写
+" set smartcase       " 有一个或以上大写字母时仍大小写敏感
+
+" 代码折叠
+set foldenable
+" 折叠方法
+" manual    手工折叠
+" indent    使用缩进表示折叠
+" expr      使用表达式定义折叠
+" syntax    使用语法定义折叠
+" diff      对没有更改的文本进行折叠
+" marker    使用标记进行折叠, 默认标记是 {{{ 和 }}}
+set foldmethod=indent
+set foldlevel=99
+
+" A buffer becomes hidden when it is abandoned
+set hidden
+
+"===============================================================================
+" 文件编码, 格式
+"===============================================================================
+
+" 设置新文件编码
+set encoding=utf-8
+" 自动判断编码时，依次尝试以下编码：
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+set helplang=cn
+
+
+"===============================================================================
+" 其他设置
+"===============================================================================
+
+" 自动补全配置
+" 让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
 set completeopt=longest,menu    " 提示只显示菜单，不显示预览窗口
 
-" use airline font
-let g:airline_powerline_fonts = 1
 
-" <C-h,j,k,l>切换到上下左右的窗口中去
-noremap <C-J>   <C-W>j
-noremap <C-K>   <C-W>k
-noremap <C-H>   <C-W>h
-noremap <C-L>   <C-W>l
+"===============================================================================
+" 主题设置
+"===============================================================================
 
-" NerdTree 忽略显示列表
-let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$']
+" 背景设置
+set background=dark
+" 颜色数目
+set t_Co=256
+colorscheme molokai
 
-" python 语法
-let python_highlight_all = 1
+"===============================================================================
+" 自定义快捷键
+"===============================================================================
 
-" Vim-Go Mappings
-au FileType go nmap <Leader>s <Plug>(go-implements)
-au FileType go nmap <Leader>i <Plug>(go-info)
-au FileType go nmap <Leader>gd <Plug>(go-doc)
-au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>c <Plug>(go-coverage)
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>dt <Plug>(go-def-tab)
-au FileType go nmap <Leader>e <Plug>(go-rename)
+" <C-h,j,k,l> 分屏窗口移动
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
 
-" Tagbar Golang config
-let g:tagbar_type_go = {
-    \ 'ctagstype' : 'go',
-    \ 'kinds'     : [
-        \ 'p:package',
-        \ 'i:imports:1',
-        \ 'c:constants',
-        \ 'v:variables',
-        \ 't:types',
-        \ 'n:interfaces',
-        \ 'w:fields',
-        \ 'e:embedded',
-        \ 'm:methods',
-        \ 'r:constructor',
-        \ 'f:functions'
-    \ ],
-    \ 'sro' : '.',
-    \ 'kind2scope' : {
-        \ 't' : 'ctype',
-        \ 'n' : 'ntype'
-    \ },
-    \ 'scope2kind' : {
-        \ 'ctype' : 't',
-        \ 'ntype' : 'n'
-    \ },
-    \ 'ctagsbin'  : 'gotags',
-    \ 'ctagsargs' : '-sort -silent'
-    \ }
-
-" Javascript, HTML, CSS
-autocmd FileType javascript,html,css,xml set ai sw=2 ts=2 sts=2
+" tab 操作
+map <tab>l :tabnext<cr>
+map <tab>h :tabprev<cr>
+map <tab>, :tabfirst<cr>
+map <tab>. :tablast<cr>
+map <tab>t :tabnew<cr>
+map <tab>w :tabclose<cr>
