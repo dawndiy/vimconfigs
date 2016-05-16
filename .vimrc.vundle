@@ -83,6 +83,7 @@ let g:ycm_use_ultisnips_completer = 1 "提示UltiSnips
 let g:ycm_seed_identifiers_with_syntax=1   "语言关键字补全
 let g:ycm_collect_identifiers_from_comments_and_strings = 1   "注释和字符串中的文字也会被收入补全
 let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_python_binary_path = '/usr/bin/python3'   " Python3
 
 let g:ycm_goto_buffer_command = 'horizontal-split'  " 跳转到定义处, 分屏打开
 " nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
@@ -201,7 +202,7 @@ Plugin 'tpope/vim-repeat'
 " ----------------- 增强显示 ------------------
 
 Plugin 'bling/vim-airline'  " lean & mean status/tabline for vim that's light as air
-let g:airline_powerline_fonts = 1   " use airline fonts
+let g:airline_powerline_fonts = 0   " use airline fonts
 
 
 " ----------------- 语言相关 ------------------
@@ -232,6 +233,18 @@ au FileType go nmap <Leader>e <Plug>(go-rename)
 
 " Html
 Plugin 'mattn/emmet-vim'
+
+" Javascript
+Plugin 'pangloss/vim-javascript'
+" syntax highlighting
+let g:javascript_enable_domhtmlcss = 1
+
+" quickly format javascript
+Plugin 'maksimr/vim-jsbeautify'
+autocmd FileType javascript  noremap <buffer> <leader>f :call JsBeautify()<cr>
+autocmd FileType json  noremap <buffer> <leader>f :call JsonBeautify()<cr>
+autocmd FileType html  noremap <buffer> <leader>f :call HtmlBeautify()<cr>
+autocmd FileType css noremap <buffer> <leader>f :call CSSBeautify()<cr>
 
 
 " 你的所有插件需要在下面这行之前
