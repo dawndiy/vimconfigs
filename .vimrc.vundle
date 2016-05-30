@@ -246,6 +246,11 @@ autocmd FileType json  noremap <buffer> <leader>f :call JsonBeautify()<cr>
 autocmd FileType html  noremap <buffer> <leader>f :call HtmlBeautify()<cr>
 autocmd FileType css noremap <buffer> <leader>f :call CSSBeautify()<cr>
 
+" Markdown
+Plugin 'suan/vim-instant-markdown'
+let g:instant_markdown_slow = 1
+let g:instant_markdown_autostart = 0
+
 
 " 你的所有插件需要在下面这行之前
 call vundle#end()            " 必须
