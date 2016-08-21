@@ -211,6 +211,8 @@ let g:airline_powerline_fonts = 0   " use airline fonts
 Plugin 'hdima/python-syntax'
 let python_highlight_all = 1
 
+Plugin 'klen/python-mode'
+
 " QML
 Plugin 'peterhoeg/vim-qml'
 
