@@ -253,6 +253,14 @@ Plugin 'suan/vim-instant-markdown'
 let g:instant_markdown_slow = 1
 let g:instant_markdown_autostart = 0
 
+" Dart
+" Plugin 'dart-lang/dart-vim-plugin'
+" if has('vim_starting')
+"     set nocompatible
+"     set runtimepath+=~/.vim/bundle/dart-vim-plugin
+" endif
+" filetype plugin indent on
+
 
 " 你的所有插件需要在下面这行之前
 call vundle#end()            " 必须
