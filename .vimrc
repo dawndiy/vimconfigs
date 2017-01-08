@@ -51,6 +51,7 @@ set shiftround      " 缩进时，取整 use multiple of shiftwidth when indenti
 autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType json setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 " 文内搜索设置
 set incsearch       " 在输入时渐进匹配查找
