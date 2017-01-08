@@ -254,11 +254,11 @@ let g:instant_markdown_slow = 1
 let g:instant_markdown_autostart = 0
 
 " Dart
-" Plugin 'dart-lang/dart-vim-plugin'
-" if has('vim_starting')
-"     set nocompatible
-"     set runtimepath+=~/.vim/bundle/dart-vim-plugin
-" endif
+Plugin 'dart-lang/dart-vim-plugin'
+if has('vim_starting')
+    set nocompatible
+    set runtimepath+=~/.vim/bundle/dart-vim-plugin
+endif
 " filetype plugin indent on
 
 
