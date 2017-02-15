@@ -38,7 +38,7 @@ Plugin 'asins/vimcdoc'      " VIM中文文档
 Plugin 'tpope/vim-fugitive' 
 
 " ----------------- 语法检查 ------------------
-Plugin 'scrooloose/syntastic'       " Syntax checking hacks for vim
+Plugin 'vim-syntastic/syntastic'       " Syntax checking hacks for vim
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -211,7 +211,10 @@ let g:airline_powerline_fonts = 0   " use airline fonts
 Plugin 'hdima/python-syntax'
 let python_highlight_all = 1
 
-Plugin 'klen/python-mode'
+Plugin 'python-mode/python-mode'
+let g:pymode_python = 'python3'
+let g:pymode_rope_lookup_project = 0
+let g:pymode_rope = 0
 
 " QML
 Plugin 'peterhoeg/vim-qml'
@@ -254,11 +257,11 @@ let g:instant_markdown_slow = 1
 let g:instant_markdown_autostart = 0
 
 " Dart
-" Plugin 'dart-lang/dart-vim-plugin'
-" if has('vim_starting')
-"     set nocompatible
-"     set runtimepath+=~/.vim/bundle/dart-vim-plugin
-" endif
+Plugin 'dart-lang/dart-vim-plugin'
+if has('vim_starting')
+    set nocompatible
+    set runtimepath+=~/.vim/bundle/dart-vim-plugin
+endif
 " filetype plugin indent on
 
 
