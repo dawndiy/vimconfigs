@@ -8,7 +8,7 @@ endif
 "===============================================================================
 
 
-set syntax=on               " 开启语法高亮
+syntax on                   " 开启语法高亮
 
 filetype on                 " 检测文件类型
 filetype indent on          " 针对不同的文件类型采用不同的缩进格式
@@ -91,6 +91,7 @@ set helplang=cn
 " 自动补全配置
 " 让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
 set completeopt=longest,menu    " 提示只显示菜单，不显示预览窗口
+set backspace=start,eol,indent  " 退格可删除 indent, end of line, start
 
 
 "===============================================================================
