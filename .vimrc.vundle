@@ -76,7 +76,7 @@ let g:ycm_key_list_select_completion=['<c-n>']
 " let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_key_list_previous_completion=['<c-p>']
 " let g:ycm_key_list_previous_completion = ['<Up>']
-let g:ycm_path_to_python_interpreter=''
+let g:ycm_path_to_python_interpreter='/usr/bin/python3'
 let g:ycm_complete_in_comments = 1  "在注释输入中也能补全
 let g:ycm_complete_in_strings = 1   "在字符串输入中也能补全
 let g:ycm_use_ultisnips_completer = 1 "提示UltiSnips
@@ -136,7 +136,7 @@ let g:UltiSnipsJumpBackwordTrigger = "<c-k>"
 Plugin 'scrooloose/nerdtree'        " A tree explorer plugin for vim.
 map <leader>n :NERDTreeToggle<CR>   " 切换开关
 " 忽略显示
-let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$', '\.swp$' ]
+let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$', '\.swp$', '\.qmlc$' ]
 
 " NERDTreeTabs
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -221,6 +221,9 @@ let g:pymode_rope = 0
 " QML
 Plugin 'peterhoeg/vim-qml'
 
+" Vue
+Plugin 'posva/vim-vue'
+
 " Golang
 " Plugin 'Blackrush/vim-gocode'
 Plugin 'fatih/vim-go'       " Go development plugin for Vim
@@ -265,11 +268,19 @@ if has('vim_starting')
     set runtimepath+=~/.vim/bundle/dart-vim-plugin
 endif
 
+" Typescript
+"Plugin 'leafgarland/typescript-vim'
+Plugin 'HerringtonDarkholme/yats.vim'
+"Plugin 'Quramy/tsuquyomi'
+
 " Rust
 Plugin 'rust-lang/rust.vim'
 
 " Scala
 Plugin 'derekwyatt/vim-scala'
+
+" Wechat mini program
+Plugin 'chemzqm/wxapp.vim'
 
 " filetype plugin indent on
 
