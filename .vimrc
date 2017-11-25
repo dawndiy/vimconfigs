@@ -48,7 +48,7 @@ set expandtab       " 将Tab自动转化成空格    [需要输入真正的Tab�
 set shiftround      " 缩进时，取整 use multiple of shiftwidth when indenting with '<' and '>'
 
 " 文件类型特别设置
-autocmd FileType html,javascript,css,json,yaml,typescript setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType html,javascript,css,json,yaml,typescript,vue setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 " 文内搜索设置
 set incsearch       " 在输入时渐进匹配查找

@@ -248,6 +248,9 @@ Plugin 'mattn/emmet-vim'
 Plugin 'pangloss/vim-javascript'
 " syntax highlighting
 let g:javascript_enable_domhtmlcss = 1
+" jsx
+Plugin 'mxw/vim-jsx'
+let g:jsx_ext_required = 0
 
 " quickly format javascript
 Plugin 'maksimr/vim-jsbeautify'
