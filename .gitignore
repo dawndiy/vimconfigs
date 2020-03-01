@@ -5,3 +5,4 @@ bundle/*
 *.swp
 configs
 plugged
+autoload

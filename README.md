@@ -1,6 +1,6 @@
 # Vim 配置
 
-整理自己用的 Vim 配置，插件使用 Vim bundle 管理插件。
+整理自己用的 Vim 配置，插件使用 Vim-Plug 管理插件。
 
 ## 安装
 
@@ -9,10 +9,26 @@
 git clone https://github.com/dawndiy/vimconfigs ~/.vim
 ```
 
-安装 Vim bundle
+安装 Vim-Plug
 ```bash
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+# Vim (~/.vim/autoload)
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# Neovim (~/.local/share/nvim/site/autoload)
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
-插件安装及新增请参考：[VundleVim/Vundle.vim](https://github.com/VundleVim/Vundle.vim)
+插件安装及新增请参考：[junegunn/vim-plug](https://github.com/junegunn/vim-plug)
 
+
+Neovim
+
+在 `~/.config/init.vim` 中添加
+
+```vim
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath = &runtimepath
+source ~/.vimrc
+```

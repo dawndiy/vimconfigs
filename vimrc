@@ -1,6 +1,6 @@
 
-if filereadable(expand("~/.vim/.vimrc.vundle"))
-    source ~/.vim/.vimrc.vundle
+if filereadable(expand("~/.vim/plug.vim"))
+    source ~/.vim/plug.vim
 endif
 
 "===============================================================================
