@@ -229,13 +229,13 @@ Plug 'mattn/emmet-vim', {'for': 'html'}
 
 
 " ######## Javascript
-Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+Plug 'pangloss/vim-javascript'
 " syntax highlighting
 let g:javascript_enable_domhtmlcss = 1
 
 
 " ######## jsx
-Plug 'mxw/vim-jsx', {'for': 'jsx'}
+Plug 'mxw/vim-jsx'
 let g:jsx_ext_required = 0
 
 
@@ -248,7 +248,7 @@ autocmd FileType css noremap <buffer> <leader>f :call CSSBeautify()<cr>
 
 
 " ######## Typescript
-Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
+Plug 'leafgarland/typescript-vim'
 
 
 " ######## Markdown
