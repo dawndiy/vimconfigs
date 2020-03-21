@@ -18,12 +18,13 @@ Plug 'nanotech/jellybeans.vim'
 " 编码相关
 " ==============================================================================
 
+" ######## 代码补全
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " ######## 代码补全
-Plug 'Valloric/YouCompleteMe' " A code-completion engine for Vim
+"Plug 'Valloric/YouCompleteMe' " A code-completion engine for Vim
 let g:ycm_key_list_select_completion=['<c-n>']      " 选择提示下一个
 let g:ycm_key_list_previous_completion=['<c-p>']    " 选择提示上一个
-let g:ycm_path_to_python_interpreter='/usr/bin/python3'
 let g:ycm_complete_in_comments = 1  "在注释输入中也能补全
 let g:ycm_complete_in_strings = 1   "在字符串输入中也能补全
 let g:ycm_use_ultisnips_completer = 1 "提示UltiSnips
@@ -31,7 +32,18 @@ let g:ycm_seed_identifiers_with_syntax=1   "语言关键字补全
 let g:ycm_collect_identifiers_from_comments_and_strings = 1   "注释和字符串中的文字也会被收入补全
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_goto_buffer_command = 'horizontal-split'  " 跳转到定义处, 分屏打开
-let g:ycm_python_binary_path = '/usr/bin/python3'   " Python3
+if has('unix')
+    let s:uname = system("uname -s")
+    if s:uname == "Darwin\n"
+        let g:ycm_path_to_python_interpreter='/usr/local/bin/python3'
+        let g:ycm_python_binary_path = '/usr/local/bin/python3'   " Python3
+    else
+        let g:ycm_path_to_python_interpreter='/usr/bin/python3'
+        let g:ycm_python_binary_path = '/usr/bin/python3'   " Python3
+    endif
+endif
+"let g:ycm_add_preview_to_completeopt = 1                " 提示时预览文档
+"let g:ycm_autoclose_preview_window_after_completion = 1 " 提示后关闭预览
 "let g:ycm_rust_src_path = '/home/dawndiy/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src' 
 " nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
@@ -118,7 +130,6 @@ let g:nerdtree_tabs_synchronize_focus=0
 
 " ######## Vim Workspace Controller buffer 管理
 Plug 'vim-ctrlspace/vim-ctrlspace'
-let g:airline_exclude_preview = 1
 let g:CtrlSpaceDefaultMappingKey="<Tab><Tab>"   " buffer列表
 nnoremap <tab>k :CtrlSpaceGoUp<CR>              " 上一个
 nnoremap <tab>j :CtrlSpaceGoDown<CR>            " 下一个
@@ -159,6 +170,10 @@ let g:tagbar_type_go = {
 " ######## 状态条
 Plug 'vim-airline/vim-airline'  " lean & mean status/tabline for vim that's light as air
 let g:airline_powerline_fonts = 0   " use airline fonts
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#ctrlspace#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline_exclude_preview = 1
 
 
 " ######## 文件搜索
@@ -181,7 +196,7 @@ Plug 'easymotion/vim-easymotion'
 
 
 " ######## Python
-Plug 'python-mode/python-mode'
+Plug 'python-mode/python-mode', {'for': 'python'}
 let g:pymode_python = 'python3'
 let g:pymode_rope_lookup_project = 0
 let g:pymode_rope = 0
@@ -189,7 +204,7 @@ let g:pymode_rope = 0
 
 " ######## Golang
 " Plugin 'mdempsky/gocode', {'rtp': 'vim/'}
-Plug 'fatih/vim-go'       " Go development plugin for Vim
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }       " Go development plugin for Vim
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
@@ -203,25 +218,29 @@ au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
 au FileType go nmap <Leader>s <Plug>(go-implements)
 au FileType go nmap <Leader>i <Plug>(go-info)
 au FileType go nmap <Leader>e <Plug>(go-rename)
+"let g:go_auto_type_info = 1
+let g:go_echo_go_info = 0
+let g:go_doc_popup_window = 1
+let g:go_list_type = "locationlist"
 
 
 " ######## HTML Emmit
-Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim', {'for': 'html'}
 
 
 " ######## Javascript
-Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 " syntax highlighting
 let g:javascript_enable_domhtmlcss = 1
 
 
 " ######## jsx
-Plug 'mxw/vim-jsx'
+Plug 'mxw/vim-jsx', {'for': 'jsx'}
 let g:jsx_ext_required = 0
 
 
 " ######## quickly format javascript
-Plug 'maksimr/vim-jsbeautify'
+Plug 'maksimr/vim-jsbeautify', {'for': ['javascript', 'json', 'html', 'css']}
 autocmd FileType javascript  noremap <buffer> <leader>f :call JsBeautify()<cr>
 autocmd FileType json  noremap <buffer> <leader>f :call JsonBeautify()<cr>
 autocmd FileType html  noremap <buffer> <leader>f :call HtmlBeautify()<cr>
@@ -229,7 +248,7 @@ autocmd FileType css noremap <buffer> <leader>f :call CSSBeautify()<cr>
 
 
 " ######## Typescript
-Plug 'leafgarland/typescript-vim'
+Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
 
 
 " ######## Markdown
@@ -259,11 +278,11 @@ Plug 'chemzqm/wxapp.vim'
 
 
 " ######## QML
-Plug 'peterhoeg/vim-qml'            " QML
+Plug 'peterhoeg/vim-qml', {'for': 'qml'}            " QML
 
 
 " ######## protobuf
-Plug 'uarun/vim-protobuf'           " protobuf
+Plug 'uarun/vim-protobuf', {'for': 'protobuf'}           " protobuf
 
 
 " ==============================================================================
@@ -272,7 +291,7 @@ Plug 'uarun/vim-protobuf'           " protobuf
 
 
 " ######## VIM中文文档
-Plug 'asins/vimcdoc'
+Plug 'yianwillis/vimcdoc'
 
 
 Plug 'tpope/vim-fugitive' 

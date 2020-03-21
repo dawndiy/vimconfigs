@@ -91,7 +91,6 @@ set helplang=cn
 set completeopt=longest,menu    " 提示只显示菜单，不显示预览窗口
 set backspace=start,eol,indent  " 退格可删除 indent, end of line, start
 
-
 "===============================================================================
 " 主题设置
 "===============================================================================
@@ -101,6 +100,11 @@ set background=dark
 " 颜色数目
 set t_Co=256
 colorscheme molokai
+"if has('+termguicolors')
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"endif
 
 "===============================================================================
 " 自定义快捷键
