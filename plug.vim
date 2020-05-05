@@ -20,6 +20,60 @@ Plug 'nanotech/jellybeans.vim'
 
 " ######## 代码补全
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Give more space for displaying messages.
+set cmdheight=2
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+set signcolumn=yes
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+
+" ------------
+
 
 " ######## 代码补全
 "Plug 'Valloric/YouCompleteMe' " A code-completion engine for Vim
@@ -42,9 +96,10 @@ if has('unix')
         let g:ycm_python_binary_path = '/usr/bin/python3'   " Python3
     endif
 endif
-"let g:ycm_add_preview_to_completeopt = 1                " 提示时预览文档
-"let g:ycm_autoclose_preview_window_after_completion = 1 " 提示后关闭预览
+let g:ycm_add_preview_to_completeopt = 1                " 提示时预览文档
+let g:ycm_autoclose_preview_window_after_completion = 1 " 提示后关闭预览
 "let g:ycm_rust_src_path = '/home/dawndiy/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src' 
+let g:ycm_rust_src_path = '/home/dawndiy/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src' 
 " nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
@@ -169,7 +224,7 @@ let g:tagbar_type_go = {
 
 " ######## 状态条
 Plug 'vim-airline/vim-airline'  " lean & mean status/tabline for vim that's light as air
-let g:airline_powerline_fonts = 0   " use airline fonts
+let g:airline_powerline_fonts = 1   " use airline fonts
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#ctrlspace#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
@@ -225,7 +280,7 @@ let g:go_list_type = "locationlist"
 
 
 " ######## HTML Emmit
-Plug 'mattn/emmet-vim', {'for': 'html'}
+Plug 'mattn/emmet-vim'
 
 
 " ######## Javascript
@@ -235,8 +290,8 @@ let g:javascript_enable_domhtmlcss = 1
 
 
 " ######## jsx
-Plug 'mxw/vim-jsx'
-let g:jsx_ext_required = 0
+"Plug 'mxw/vim-jsx'
+"let g:jsx_ext_required = 0
 
 
 " ######## quickly format javascript
@@ -249,6 +304,8 @@ autocmd FileType css noremap <buffer> <leader>f :call CSSBeautify()<cr>
 
 " ######## Typescript
 Plug 'leafgarland/typescript-vim'
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+Plug 'MaxMEllon/vim-jsx-pretty'
 
 
 " ######## Markdown
@@ -262,7 +319,7 @@ Plug 'chemzqm/wxapp.vim'
 
 
 " ######## Rust
-"Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim'
 
 
 " ######## Scala
