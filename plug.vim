@@ -12,10 +12,13 @@ Plug 'morhetz/gruvbox'          " Retro groove color scheme for Vim
 Plug 'altercation/vim-colors-solarized', { 'as': 'solarized' }
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'nanotech/jellybeans.vim'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'kyoz/purify', { 'rtp': 'vim' }
 
 
 " ==============================================================================
 " 编码相关
+" 
 " ==============================================================================
 
 " ######## 代码补全
@@ -98,8 +101,7 @@ if has('unix')
 endif
 let g:ycm_add_preview_to_completeopt = 1                " 提示时预览文档
 let g:ycm_autoclose_preview_window_after_completion = 1 " 提示后关闭预览
-"let g:ycm_rust_src_path = '/home/dawndiy/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src' 
-let g:ycm_rust_src_path = '/home/dawndiy/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src' 
+let g:ycm_rust_src_path = '/home/dawndiy/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src' 
 " nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
@@ -192,7 +194,7 @@ nnoremap <tab>j :CtrlSpaceGoDown<CR>            " 下一个
 
 " ######## 标签导航
 Plug 'majutsushi/tagbar'              " a class outline viewer for Vim
-map <Leader>m :TagbarToggle<CR>
+map <Leader>m :Vista!<CR>:TagbarToggle<CR>
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
     \ 'kinds'     : [
@@ -221,6 +223,24 @@ let g:tagbar_type_go = {
     \ 'ctagsargs' : '-sort -silent'
     \ }
 
+" ######## 标签导航 异步
+Plug 'liuchengxu/vista.vim'
+map <Leader>, :TagbarClose<CR>:Vista!!<CR>
+let g:vista_sidebar_width = 40
+let g:vista#renderer#enable_icon = 1
+" Set the executive for some filetypes explicitly. Use the explicit executive
+" instead of the default one for these filetypes when using `:Vista` without
+" specifying the executive.
+let g:vista_executive_for = {
+\   "javascript": "coc",
+\   "ts": "coc",
+"\   "go": "ctags",
+\ }
+let g:vista_default_executive = "coc"
+"let g:vista_ctags_cmd = {
+"\   'go': 'gotags -sort -slient',
+"\ }
+
 
 " ######## 状态条
 Plug 'vim-airline/vim-airline'  " lean & mean status/tabline for vim that's light as air
@@ -234,6 +254,8 @@ let g:airline_exclude_preview = 1
 " ######## 文件搜索
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 map <C-p> :FZF <CR>
+
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 
 
 " ######## 内容搜索工具
@@ -251,7 +273,7 @@ Plug 'easymotion/vim-easymotion'
 
 
 " ######## Python
-Plug 'python-mode/python-mode', {'for': 'python'}
+"Plug 'python-mode/python-mode', {'for': 'python'}
 let g:pymode_python = 'python3'
 let g:pymode_rope_lookup_project = 0
 let g:pymode_rope = 0
@@ -353,6 +375,12 @@ Plug 'yianwillis/vimcdoc'
 
 Plug 'tpope/vim-fugitive' 
 
+" ######## 图标
+Plug 'ryanoasis/vim-devicons'
+" loading the plugin
+let g:webdevicons_enable = 1
+" adding the flags to NERDTree
+let g:webdevicons_enable_nerdtree = 1
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
