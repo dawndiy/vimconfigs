@@ -190,6 +190,22 @@ Plug 'vim-ctrlspace/vim-ctrlspace'
 let g:CtrlSpaceDefaultMappingKey="<Tab><Tab>"   " buffer列表
 nnoremap <tab>k :CtrlSpaceGoUp<CR>              " 上一个
 nnoremap <tab>j :CtrlSpaceGoDown<CR>            " 下一个
+"nnoremap <tab>k :bn<CR>              " 上一个
+"nnoremap <tab>j :bN<CR>            " 下一个
+if has('win32')
+    let s:vimfiles = '~/vimfiles'
+    let s:os   = 'windows'
+else
+    let s:vimfiles = '~/.vim'
+    if has('mac') || has('gui_macvim')
+        let s:os = 'darwin'
+    else
+    " elseif has('gui_gtk2') || has('gui_gtk3')
+        let s:os = 'linux'
+    endif
+endif
+
+let g:CtrlSpaceFileEngine = s:vimfiles . '/plugged/vim-ctrlspace' . '/bin/file_engine_' . s:os . '_amd64'
 
 
 " ######## 标签导航
@@ -252,10 +268,11 @@ let g:airline_exclude_preview = 1
 
 
 " ######## 文件搜索
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-map <C-p> :FZF <CR>
+"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"map <C-p> :FZF <CR>
 
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
+map <C-p> :Clap <CR>
 
 
 " ######## 内容搜索工具
@@ -308,7 +325,7 @@ Plug 'mattn/emmet-vim'
 " ######## Javascript
 Plug 'pangloss/vim-javascript'
 " syntax highlighting
-let g:javascript_enable_domhtmlcss = 1
+"let g:javascript_enable_domhtmlcss = 1
 
 
 " ######## jsx
@@ -326,9 +343,14 @@ autocmd FileType css noremap <buffer> <leader>f :call CSSBeautify()<cr>
 
 " ######## Typescript
 Plug 'leafgarland/typescript-vim'
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
-Plug 'MaxMEllon/vim-jsx-pretty'
-
+autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
+autocmd BufNewFile,BufRead *.jsx set filetype=javascript
+"autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+"Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
+"Plug 'chemzqm/vim-jsx-improve'
+"let g:vim_jsx_pretty_colorful_config = 1
+"let g:vim_jsx_pretty_highlight_close_tag = 1
 
 " ######## Markdown
 Plug 'suan/vim-instant-markdown'
