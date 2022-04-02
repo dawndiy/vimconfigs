@@ -50,6 +50,7 @@ set shiftround      " 缩进时，取整 use multiple of shiftwidth when indenti
 " 文件类型特别设置
 autocmd FileType html,javascript,css,json,yaml,typescript,vue setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType typescriptreact,javascriptreact,less,sass,typescript.tsx setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType gohtmltmpl,dart setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 " 文内搜索设置
 set incsearch       " 在输入时渐进匹配查找
