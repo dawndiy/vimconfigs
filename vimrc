@@ -36,7 +36,8 @@ set showmatch       " 高亮显示匹配的括号
 set matchtime=2     " 匹配括号高亮的时间（单位是十分之一秒）
 
 " 缩进配置
-set smartindent     " 智能缩进, 能匹配括号
+"set smartindent     " 智能缩进, 能匹配括号
+set cindent
 set autoindent      " 自动缩进
 
 " Tab相关变更

@@ -16,6 +16,7 @@ Plug 'drewtempelmeyer/palenight.vim'
 Plug 'kyoz/purify', { 'rtp': 'vim' }
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'EdenEast/nightfox.nvim'
+Plug 'arcticicestudio/nord-vim'
 Plug 'sainnhe/everforest'
 
 
@@ -36,7 +37,6 @@ set shortmess+=c
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 set signcolumn=yes
-
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
@@ -45,12 +45,10 @@ inoremap <silent><expr> <TAB>
       \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice.
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
 function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
@@ -62,7 +60,6 @@ if has('nvim')
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
-
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
@@ -278,10 +275,10 @@ let g:nerdtree_tabs_synchronize_focus=0
 " ######## Vim Workspace Controller buffer 管理
 Plug 'vim-ctrlspace/vim-ctrlspace'
 let g:CtrlSpaceDefaultMappingKey="<Tab><Tab>"   " buffer列表
-nnoremap <tab>k :CtrlSpaceGoUp<CR>              " 上一个
-nnoremap <tab>j :CtrlSpaceGoDown<CR>            " 下一个
-"nnoremap <tab>k :bn<CR>              " 上一个
-"nnoremap <tab>j :bN<CR>            " 下一个
+"nnoremap <tab>k :CtrlSpaceGoUp<CR>              " 上一个
+"nnoremap <tab>j :CtrlSpaceGoDown<CR>            " 下一个
+nnoremap <tab>k :bN<CR>              " 上一个
+nnoremap <tab>j :bn<CR>            " 下一个
 if has('win32')
     let s:vimfiles = '~/vimfiles'
     let s:os   = 'windows'
@@ -378,6 +375,9 @@ Plug 'easymotion/vim-easymotion'
 " 编程语言
 " ==============================================================================
 
+" Nvim Treesitter configurations and abstraction layer 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 
 " ######## Python
 "Plug 'python-mode/python-mode', {'for': 'python'}
@@ -416,7 +416,7 @@ Plug 'mattn/emmet-vim'
 
 
 " ######## Javascript
-Plug 'pangloss/vim-javascript'
+"Plug 'pangloss/vim-javascript'
 " syntax highlighting
 "let g:javascript_enable_domhtmlcss = 1
 
@@ -435,12 +435,13 @@ autocmd FileType css noremap <buffer> <leader>f :call CSSBeautify()<cr>
 
 
 " ######## Typescript
-Plug 'leafgarland/typescript-vim'
-autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
-autocmd BufNewFile,BufRead *.jsx set filetype=javascript
+"Plug 'leafgarland/typescript-vim'
+"let g:typescript_indent_disable = 1
+"autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
+"autocmd BufNewFile,BufRead *.jsx set filetype=javascript
 "autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 "Plug 'yuezk/vim-js'
-Plug 'maxmellon/vim-jsx-pretty'
+"Plug 'maxmellon/vim-jsx-pretty'
 "Plug 'chemzqm/vim-jsx-improve'
 "let g:vim_jsx_pretty_colorful_config = 1
 "let g:vim_jsx_pretty_highlight_close_tag = 1
