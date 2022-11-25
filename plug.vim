@@ -252,6 +252,9 @@ Plug 'terryma/vim-multiple-cursors'
 " ######## Switch between single-line and multiline forms of code
 Plug 'AndrewRadev/splitjoin.vim'
 
+" ######## This plugin adds indentation guides to all lines (including empty lines).
+Plug 'lukas-reineke/indent-blankline.nvim'
+
 
 " ==============================================================================
 " 导航
@@ -264,21 +267,15 @@ map <leader>n :NERDTreeToggle<CR>   " 切换开关
 let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$', '\.swp$', '\.qmlc$' ]
 
 
-" ######## NERDTreeTabs Tab 同步目录导航
-Plug 'jistr/vim-nerdtree-tabs'
-map <Leader>n <plug>NERDTreeTabsToggle<CR>
-" 关闭同步
-let g:nerdtree_tabs_synchronize_view=0
-let g:nerdtree_tabs_synchronize_focus=0
-
-
 " ######## Vim Workspace Controller buffer 管理
 Plug 'vim-ctrlspace/vim-ctrlspace'
 let g:CtrlSpaceDefaultMappingKey="<Tab><Tab>"   " buffer列表
 "nnoremap <tab>k :CtrlSpaceGoUp<CR>              " 上一个
 "nnoremap <tab>j :CtrlSpaceGoDown<CR>            " 下一个
-nnoremap <tab>k :bN<CR>              " 上一个
-nnoremap <tab>j :bn<CR>            " 下一个
+" 上一个
+nnoremap <tab>k :bN<CR>
+" 下一个
+nnoremap <tab>j :bn<CR>
 if has('win32')
     let s:vimfiles = '~/vimfiles'
     let s:os   = 'windows'
@@ -360,6 +357,10 @@ let g:airline_exclude_preview = 1
 
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 map <C-p> :Clap <CR>
+" 文件搜索
+nnoremap <tab>f :Clap files<CR>
+" 正则搜索
+nnoremap <tab>g :Clap grep<CR>
 
 
 " ######## 内容搜索工具
@@ -499,6 +500,9 @@ Plug 'ryanoasis/vim-devicons'
 let g:webdevicons_enable = 1
 " adding the flags to NERDTree
 let g:webdevicons_enable_nerdtree = 1
+
+" ######## 启动时间
+Plug 'dstein64/vim-startuptime'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()

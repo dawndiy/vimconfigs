@@ -105,8 +105,9 @@ set t_Co=256
 "colorscheme molokai
 "colorscheme palenight
 if has('nvim')
+    colorscheme tokyonight
     "colorscheme tokyonight-moon
-    colorscheme nightfox
+    "colorscheme nightfox
     "colorscheme duskfox
 else
     colorscheme palenight
